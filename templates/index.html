@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {%load static %} {% block title %}
+<title> Gemini Chatbot </title>
+
+{% endblock title%} {% block content %} {% include 'header.html' %}
+
+<div class="MainContainer">
+  <div class="container">
+    <div class="Conversation"></div>
+
+    <form action="" class="InputForm">
+      <input class="Main" type="text" name="" placeholder="Enter Your Text" />
+      <input type="submit" name="" value=">" />
+    </form>
+  </div>
+</div>
+{% endblock content %}

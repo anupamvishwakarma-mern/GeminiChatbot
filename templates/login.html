@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    <title>Document</title>
+{% endblock title %}    
+
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+    {{ message }}   
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button> 
+   </div>
+{% endfor %}
+{% endif %}        
+
+<div class="main">
+    <div class="example">
+    <div class="submit_to_box">
+        <img class="bkg_img" src="{% static 'images/img.jpg' %}" alt="">
+        <h2 style="text-align: center; text-decoration:underline">Submitted By</h2>
+        <b><p style="line-height: 30px; margin-top:10px" class="p6">Name : Amit Kumar <br>
+            Roll No. : 2201650109010 <br>
+            Course : B.Tech <br>
+            Branch : Computer Science <br>
+
+        </p>
+    </b>
+    </div>
+</div>
+<div class="example">
+    <h1><div class="cursor cursor4"></div>MINI-PROJECT</h1>
+    <video src="{% static 'video/video.mp4' %}" type="video/mp4" loop autoplay muted></video>
+    <form class="box" method="post" action="/login">
+{% csrf_token %}
+
+        <div class="cursor"></div>
+        <h1>SIGN IN</h1>
+        <div class="box1">
+            <input type="email" placeholder="email" required name="email"><br>
+            <input type="password" placeholder="Password" required name="password"><br>
+        </div>
+        <button type="submit">Login</button>
+        <p class="p1">Create an account:<span onclick="flip()">Sign Up</span></p>
+    </form>
+
+    <form class="box3" method="post" action="/signup">
+{% csrf_token %}
+        <div class="cursor"></div>
+        <h1>SIGN UP</h1>
+        <div class="box1 box2">
+
+            <input type="text" placeholder="Name" required name="name"><br>
+            <input type="Email" placeholder="Email" required name="email"><br>
+            <input type="Password" placeholder="Password" required name="password"><br>
+            <input type="Password" placeholder="Confirm Password" required name="confirm_password"><br>
+        </div>
+        <button class="button" type="submit">Sign In</button>
+        <p class="p">I have already an account:<span onclick="flip2()">Sign up</span></p>
+    </form>
+</div>
+<div class="example">
+    <div class="submit_to_box">
+        <h2 style="text-align: center; text-decoration:underline">Submitted To</h2>
+        <b><p style="line-height: 30px; margin-top:50px ; font-size:20px">Name : Suraj Srivastava <br>
+            
+        </p>
+        <div style="margin-left: 70px;">
+        (Assistant Professor)
+    </div>
+    </div>
+</div>
+</div>
+<script>
+    var pass=document.getElementsByName("Pass")[0];
+    var pass1=document.getElementsByName("cPass")[0];
+    
+
+    var box = document.getElementsByClassName("box")[0];
+    var box3 = document.getElementsByClassName("box3")[0];
+    function flip() {
+        box.style.transform = "rotateY(180deg)";
+        box.style.opacity = 0;
+        box.style.zIndex = "1"
+
+        box3.style.transform = "rotateY(0deg)";
+        box3.style.opacity = 1;
+        box3.style.visibility = "visible";
+        box3.style.zIndex = "2"
+    }
+    function flip2() {
+        box.style.transform = "rotateY(0deg)";
+        box.style.opacity = 1;
+        box.style.zIndex = "2"
+
+        box3.style.transform = "rotateY(180deg)";
+        box3.style.opacity = 0;
+        box3.style.visibility = "hidden";
+        box3.style.zIndex = "1"
+    }
+
+    var cursor = document.querySelectorAll(".cursor")[1];
+
+    var cursor4 = document.querySelectorAll(".cursor")[0];
+    var cursor2 = document.querySelectorAll(".cursor")[2];
+    window.addEventListener("mousemove", function (e) {
+        cursor2.style.top = e.y - 210 + "px";
+        cursor2.style.left = e.x - 580 + "px";
+        
+        cursor.style.top = e.y - 210 + "px";
+        cursor.style.left = e.x - 580 + "px";
+    })
+
+    window.addEventListener("mousemove", function (e) {
+        cursor4.style.top = e.y - 20 + "px";
+        cursor4.style.left = e.x - 600 + "px";
+        
+        
+    })
+
+
+</script>
+{% endblock content %}
